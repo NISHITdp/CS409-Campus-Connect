@@ -4,6 +4,8 @@ import cors from "cors";
 import { connectDB } from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import groupRoutes from "./routes/groupRoutes.js";
+import eventRoutes from "./routes/eventRoutes.js";
+
 
 dotenv.config();       // 1️⃣ Load environment variables first
 connectDB();           // 2️⃣ Connect to MongoDB
@@ -17,6 +19,8 @@ app.use(express.json());                            // 5️⃣ Parse JSON bodies
 app.get("/", (req, res) => res.send("Campus Connect API running"));
 app.use("/api/users", userRoutes);
 app.use("/api/groups", groupRoutes);
+app.use("/api/events", eventRoutes);
+
 
 // 7️⃣ Start the server
 const PORT = process.env.PORT || 5000;
