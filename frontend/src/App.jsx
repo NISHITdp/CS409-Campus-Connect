@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const API = "http://localhost:8000/api";
+const API = "https://campus-connect-backend.onrender.com/api";
 
 export default function App() {
   const [form, setForm] = useState({ email: "", password: "" });
