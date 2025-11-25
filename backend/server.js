@@ -7,21 +7,21 @@ import groupRoutes from "./routes/groupRoutes.js";
 import eventRoutes from "./routes/eventRoutes.js";
 
 
-dotenv.config();       // 1️⃣ Load environment variables first
-connectDB();           // 2️⃣ Connect to MongoDB
+dotenv.config();    
+connectDB();        
 
-const app = express(); // 3️⃣ Initialize app BEFORE using it
+const app = express();
 
-app.use(cors({ origin: "http://localhost:5173" })); // 4️⃣ Enable CORS
-app.use(express.json());                            // 5️⃣ Parse JSON bodies
+// app.use(cors({ origin: "http://localhost:5173" })); 
+app.use(cors()); 
+app.use(express.json());                            
 
-// 6️⃣ Routes
 app.get("/", (req, res) => res.send("Campus Connect API running"));
+app.get("/healthz", (req, res) => res.status(200).send("OK"));
 app.use("/api/users", userRoutes);
 app.use("/api/groups", groupRoutes);
 app.use("/api/events", eventRoutes);
 
 
-// 7️⃣ Start the server
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
