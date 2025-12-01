@@ -1,9 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 
-// const API = "https://campus-connect-backend.onrender.com/api";
+const API = "https://cs409-campus-connect-1.onrender.com/api";
 // FOR LOCAL DEV
-const API = "http://localhost:8000/api";
+// const API = "http://localhost:8000/api";
 
 
 export default function App() {
