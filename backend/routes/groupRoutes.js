@@ -1,7 +1,7 @@
 // backend/routes/groupRoutes.js
 import express from "express";
 import Group from "../models/Group.js";
-import { authMiddleware } from "../middleware/auth.js";
+import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 });
 
 // POST /api/groups  -> create a group (protected)
-router.post("/", authMiddleware, async (req, res) => {
+router.post("/", protect, async (req, res) => {
   try {
     const { name, description } = req.body;
 

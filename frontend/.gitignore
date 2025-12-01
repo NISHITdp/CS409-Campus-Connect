@@ -27,3 +27,7 @@ dist-ssr
 backend/.env
 frontend/.env
 dist
+node_modules
+.env
+dist
+.DS_Store
