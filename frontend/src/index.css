@@ -1,3 +1,130 @@
+/* frontend/src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ===== Illini theme (base tokens) ===== */
+:root{
+  --illini-orange:#E84A27;
+  --illini-navy:#13294B;
+  --illini-navy-600:#1b3a6a;
+  --uiuc-orange-strong: rgba(255,95,5,1); /* 🔸 requested */
+  --bg:#f7f8fb;
+  --card:#ffffff;
+  --ink:#1f2937;             /* gray-800 */
+  --muted:#6b7280;           /* gray-500 */
+  --surface:#ffffff;
+  --surface-soft:#f7f8fb;
+  --ring: rgba(19,41,75,.12);
+}
+
+html,body,#root{height:100%}
+body{ background: var(--surface-soft); color: var(--ink); }
+
+/* ===== Layout helpers ===== */
+.container-illini{ @apply max-w-5xl mx-auto px-4; }
+
+/* ===== Buttons ===== */
+.btn-illini{
+  background: linear-gradient(135deg, var(--illini-orange) 0%, var(--illini-navy) 100%);
+  @apply text-white font-semibold px-4 py-2 rounded-lg transition active:scale-[.99] shadow;
+}
+.btn-illini:hover{ filter: brightness(1.05); transform: translateY(-1px); }
+
+/* Default outline button (light background sections) */
+.btn-outline-illini{
+  @apply bg-white text-[var(--illini-navy)] border-2 border-[var(--illini-navy)] font-semibold px-4 py-2 rounded-lg transition;
+}
+.btn-outline-illini:hover{
+  background: var(--uiuc-orange-strong);
+  border-color: var(--uiuc-orange-strong);
+  color: #fff;
+}
+
+/* Navbar-specific outline buttons so text doesn't vanish on hover */
+.nav-illini .btn-outline-illini{
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,.6);
+}
+.nav-illini .btn-outline-illini:hover{
+  background: var(--uiuc-orange-strong);   /* 🔸 UIUC orange hover */
+  border-color: var(--uiuc-orange-strong);
+  color: #fff;
+}
+.btn-outline-illini:focus-visible{
+  outline: 2px solid rgba(255,95,5,.9);
+  outline-offset: 2px;
+}
+
+/* ===== Cards ===== */
+.card{
+  @apply bg-white rounded-xl shadow-sm border border-gray-200 p-4;
+}
+.card-hover{ @apply transition hover:shadow-md hover:border-[var(--illini-orange)]; }
+
+/* ===== Headings ===== */
+.h1{ @apply text-3xl font-bold text-[var(--illini-navy)]; }
+.h2{ @apply text-2xl font-semibold text-[var(--illini-navy)]; }
+
+/* ===== Badges ===== */
+.badge{ @apply inline-flex items-center text-xs font-medium px-2 py-1 rounded-full; }
+.badge-orange{ @apply badge text-white; background: var(--illini-orange); }
+.badge-navy{ @apply badge text-white; background: var(--illini-navy); }
+
+/* ===== Muted text ===== */
+.muted{ color: var(--muted); }
+
+/* ===== Illini polish pack ===== */
+
+/* Top bar */
+.nav-illini{
+  position: sticky; top:0; z-index:40;
+  background: linear-gradient(135deg, #13294B 0%, #1b3b6b 55%, #243f6f 100%);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  box-shadow: 0 6px 20px rgba(19,41,75,.15);
+}
+.nav-illini .brand{
+  color:#fff; font-weight:700; letter-spacing:.2px;
+  display:flex; gap:.6rem; align-items:center;
+}
+.nav-illini .brand .dot{ width:8px; height:8px; border-radius:999px; background:var(--illini-orange); }
+
+/* Page container */
+.section{ max-width: 1040px; margin: 28px auto; padding: 0 20px; }
+
+/* Section title */
+.section-title{
+  display:flex; align-items:center; gap:.6rem;
+  font-size:1.25rem; font-weight:700; color:var(--illini-navy);
+}
+
+/* Card (accent top border) */
+.card-illini{
+  background: var(--surface);
+  border-radius: 16px;
+  border: 1px solid #eef0f6;
+  box-shadow: 0 4px 16px rgba(19,41,75,.06);
+  position: relative; overflow:hidden;
+}
+.card-illini::before{
+  content:""; position:absolute; inset:0 0 auto 0; height:4px;
+  background: linear-gradient(90deg, var(--illini-orange), var(--illini-navy));
+  opacity:.9;
+}
+/* Card body spacing */
+.card-pad{ padding: 18px 20px; }
+
+/* Pills & badges */
+.pill{ font-size:.74rem; padding:.25rem .55rem; border-radius:999px; font-weight:600; }
+.pill-open{ background:#fff4ee; color:#cf3f20; border:1px solid #ffd7c9; }
+.pill-joined{ background:#e9f9ee; color:#118a41; border:1px solid #bde7ca; }
+.pill-muted{ background:#eef2f7; color:#4b5563; border:1px solid #e1e6ef; }
+
+/* Soft list grid */
+.grid-soft{ display:grid; gap:18px; grid-template-columns: repeat(1,minmax(0,1fr)); }
+@media (min-width: 880px){ .grid-soft{ grid-template-columns: repeat(2,minmax(0,1fr)); } }
+
+/* Small helpers */
+.kv{ color:var(--muted); font-size:.9rem; }
+.title{ font-weight:700; color:var(--illini-navy); font-size:1.05rem; }
